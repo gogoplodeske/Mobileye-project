@@ -17,6 +17,7 @@ from scipy.ndimage.filters import maximum_filter
 import scipy.ndimage as ndimage
 import Utils
 import matplotlib.pyplot as plt
+
 class Controller:
     gt_dir = ''
     imgs_dir=''
@@ -51,12 +52,13 @@ class Controller:
     def run(self):
         if self.batch_size == 0:
             return
-        tfl_man = TFL_Man.TFL_Man(0,self.train_img[0])
+        tfl_man = TFL_Man.TFL_Man(0,self.train_imgs[0])
         for i in range(self.batch_size):
             tfl_man.Part1(self.result_dir_part1)
             k = i+1
             if k !=self.batch_size:
-                tfl_man.Setframe(k,self.train_img[0])
+                tfl_man.Setframe(k,self.train_imgs[k])
+
 
 
 
