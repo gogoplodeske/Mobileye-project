@@ -4,6 +4,7 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
+
 class Singleton:
     __instance = None
 
@@ -22,32 +23,49 @@ class Singleton:
             Singleton.__instance = self
 
 
+class Container:
+    def __init__(self, FramId, FramePath):
+        self.FrameId = FramId
+        self.FramePath = FramePath
+        self.AuxRed = np.array([])
+        self.xRed = np.array([])
+        self.yRed = np.array([])
+        self.AuxGreen = np.array([])
+        self.xGreen = np.array([])
+        self.yGreen = np.array([])
+
 class TFL_Man(Singleton):
-    prevframe = {}
-    currentframe = {}
+    #prevframe = {}
+    #currentframe = {}
 
     def __init__(self, frameID, framepath):
         super().__init__()
-        self.currentframe['FramId'] = frameID
-        self.currentframe['FramePath'] = framepath
-
+        #self.currentframe = frameID
+        #self.currentframe['FramePath'] = framepath
+        self.currentframe = Container(frameID, framepath)
+        self.prevframe = Container(frameID, framepath)
     def Setframe(self, frameID, framepath):
-        self.prevframe = self.currentframe.copy()
-        self.currentframe['FramId'] = frameID
-        self.currentframe['FramePath'] = framepath
+        self.prevframe  = self.currentframe
+        #print(self.prevframe.xRed)
+        #print(self.prevframe.xGreen)
+        self.currentframe = Container(frameID, framepath)
+
+         # self.prevframe = self.currentframe.copy()
+        # self.currentframe['FramId'] = frameID
+        # self.currentframe['FramePath'] = framepath
 
     def Part1(self, output1_dir):
-        image = Utils.Read_image(self.currentframe['FramePath'])
+        image = Utils.Read_image(self.currentframe.FramePath)
 
         drawed = np.copy(image)
-        name = self.currentframe['FramePath'].split('\\')[-1]
+        name = self.currentframe.FramePath.split('\\')[-1]
         for i, c in enumerate(('Reds', 'Greens')):
             img = np.copy(image)
             Utils.findcandidate(self.currentframe, image[:, :, i], c, drawed)
         dir_name = os.path.join(output1_dir, name)
-        print(self.currentframe['FramePath'])
+        print(self.currentframe.FramePath)
         plt.figure()
-        plt.imshow(drawed/ 255)
+        plt.imshow(drawed / 255)
         plt.savefig(dir_name)
         plt.close()
-
+    def Part2
