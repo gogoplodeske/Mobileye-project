@@ -31,20 +31,21 @@ class Controller:
     result_dir_part1=''
     result_dir_part2 = ''
     result_dir_part3 = ''
-    def __init__(self,gtdir,imgsdir,batch,dir_part1 ):
+    def __init__(self,gtdir,imgsdir,batch,dir_part1,dir_part3 ):
         #gt_dir = r'C:\Users\RENT\Desktop\Mobilye project\CityScapes\gtFine'
         #imgs_dir = r'C:\Users\RENT\Desktop\Mobilye project\CityScapes\leftImg8bit'
         self.gt_dir = gtdir
         self.imgs_dir = imgsdir
         self.batch_size = batch
         self.result_dir_part1 = dir_part1
+        self.result_dir_part3 =dir_part3
         # Import data
-        gt_train_path = os.path.join(self.gt_dir, 'train')
-        imgs_train_path = os.path.join(self.imgs_dir, 'train')
-        gt_val_path = os.path.join(self.gt_dir, 'val')
-        imgs_val_path = os.path.join(self.imgs_dir, 'val')
-        gt_test_path = os.path.join(self.gt_dir, 'test')
-        imgs_test_path = os.path.join(self.imgs_dir, 'test')
+        gt_train_path = os.path.join(self.gt_dir)
+        imgs_train_path = os.path.join(self.imgs_dir)
+        gt_val_path = os.path.join(self.gt_dir)
+        imgs_val_path = os.path.join(self.imgs_dir)
+        gt_test_path = os.path.join(self.gt_dir)
+        imgs_test_path = os.path.join(self.imgs_dir)
         self.train_imgs, self.train_gt = Utils.get_files(imgs_train_path, gt_train_path)
         print(len(self.train_imgs))
         self.val_imgs, self.val_gt = Utils.get_files(imgs_val_path, gt_val_path)
@@ -55,9 +56,13 @@ class Controller:
         tfl_man = TFL_Man.TFL_Man(0,self.train_imgs[0])
         for i in range(self.batch_size):
             tfl_man.Part1(self.result_dir_part1)
+            tfl_man.Part2()
+            if i !=0:
+                tfl_man.Part3(self.result_dir_part3)
             k = i+1
             if k !=self.batch_size:
                 tfl_man.Setframe(k,self.train_imgs[k])
+
 
 
 

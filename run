@@ -1,0 +1,13 @@
+
+
+import Controller
+
+outputpart1 = r'C:\Users\RENT\Desktop\Mobilye project\output_part1'
+gt_dir = r'C:\Users\RENT\Desktop\Mobilye project\CityScapes\gtFine'
+imgs_dir = r'C:\Users\RENT\Desktop\Mobilye project\dusseldorf_000049'
+outputpart3 = r'C:\Users\RENT\Desktop\Mobilye project\output_part3_locations'
+controller = Controller.Controller(gt_dir,imgs_dir,10,outputpart1,outputpart3)
+controller.run()
+
+
+

@@ -132,7 +132,7 @@ class TFL_Man(Singleton):
                 data = pickle.load(pklfile, fix_imports=True, encoding='latin1')
             focal_length = data['flx']
             pp = data['principle_point']
-            print('egomotion_' + str(self.prevframe.FrameId) + '-' + str(self.currentframe.FrameId))
+            #print('egomotion_' + str(self.prevframe.FrameId) + '-' + str(self.currentframe.FrameId))
             EM18_19 = data['egomotion_' + str(self.prevframe.FrameId) + '-' + str(self.currentframe.FrameId)]
             self.currentframe.tf_3Dlocations , points = Utils.calc_TFL_dist(self.currentframe.Part2res, self.prevframe.Part2res,EM18_19, focal_length, pp)
             #points_18 = data['points_18']
@@ -155,8 +155,7 @@ class TFL_Man(Singleton):
             style = dict(size=15, color='yellow')
             plt.figure(figsize=(20, 20))
             plt.imshow(img_curr / 255)
-            print(EM18_19)
-            print(points)
+
             x = [x[0] for x in points]
             y = [x[1] for x in points]
             plt.scatter(x, y)
