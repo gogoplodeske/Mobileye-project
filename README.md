@@ -30,4 +30,5 @@ Format: ![Alt Text](url)
 Links
 
 Comments: 
-In part2 you need a trained nerural network. I trained a model and saved in export.pkl. you need this file for Part2. 
+In part2 you need a trained nerural network. I trained a model and saved in export.pkl. you need this file for Part2.  Here you can find
+export.pkl:https://drive.google.com/open?id=1pw_ODPsXtKSxdZGejwkyZcX2car3XxnY
