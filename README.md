@@ -30,5 +30,4 @@ Format: ![Alt Text](url)
 Links
 
 Comments: 
-In part2 you need a trained nerural network. I trained a model and saved in traing. and due to its huge sixe cauldn't be able to 
-load it in github. 
+In part2 you need a trained nerural network. I trained a model and saved in export.pkl. you need this file for Part2. 
