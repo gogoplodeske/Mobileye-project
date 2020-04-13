@@ -20,8 +20,7 @@ becuase we use in part3 to calculate the location by the projection and epipolar
 a batch include a trafic light or no if yes then in Part3 calculate its distance from the car. Here is a display for this design: 
 
 ![GitHub Logo](/design.png)
-Format: ![Alt Text](url)
-Links
+
 
 
 and here more details for Part1,Part2 and Part3:
